@@ -4,8 +4,5 @@ import org.springframework.data.repository.CrudRepository;
 import com.bd.cl3.modelo.*;
 
 public interface IProductoRepositorio extends CrudRepository<TblProducto,Integer>{
-
 	
-	
-	
-} //fin de la interface
+} //FIN DE MI INTERFACE

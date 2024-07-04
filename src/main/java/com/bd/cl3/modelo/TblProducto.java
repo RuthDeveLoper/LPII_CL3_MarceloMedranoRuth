@@ -11,9 +11,7 @@ import jakarta.persistence.Table;
 public class TblProducto {
 
 	@Id
-
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-
 	private int idproductocl3; 
 	private String nombrecl3; 
 	private double precioventacl3; 
@@ -22,8 +20,7 @@ public class TblProducto {
 	 private String estadocl3;
 	 private String descripcl3;
 	 
-	 
-	 
+	 //CONSTRUCTOR CON TODOS SUS ATRIBUTOS
 	@Override
 	public String toString() {
 		return "TblProducto [idproductocl3=" + idproductocl3 + ", nombrecl3=" + nombrecl3 + ", precioventacl3="
@@ -34,6 +31,8 @@ public class TblProducto {
 				+ ", getDescripcl3()=" + getDescripcl3() + ", getClass()=" + getClass() + ", hashCode()=" + hashCode()
 				+ ", toString()=" + super.toString() + "]";
 	}
+	
+	//METODOS GET Y SET
 	public int getIdproductocl3() {
 		return idproductocl3;
 	}
@@ -77,7 +76,5 @@ public class TblProducto {
 		this.descripcl3 = descripcl3;
 	} 
 	
-	
-	
-	
 }
+

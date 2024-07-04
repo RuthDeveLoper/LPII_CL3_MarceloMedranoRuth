@@ -1,5 +1,4 @@
 package com.bd.cl3.servicio;
-
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,10 +14,12 @@ import jakarta.transaction.Transactional;
 @Transactional
 public class ClassProductoImp implements IProductoServicio{
 
-	//aplico la inyeccion de dependencia..
+	//REALIZO INYECCION DE MI DEPENDENCIA
 	@Autowired 
 	private IProductoRepositorio iproductorepository;
 
+	
+	
 	@Override
 	public List<TblProducto> ListadoProducto() {
 		return (List<TblProducto>)iproductorepository.findAll();
@@ -26,24 +27,20 @@ public class ClassProductoImp implements IProductoServicio{
 
 	@Override
 	public void RegistrarProducto(TblProducto producto) {
-		//Registro datos
+		//AQUI REGISTRARE
 		iproductorepository.save(producto);
 		
 	}
-
 	@Override
 	public TblProducto BuscarporId(Integer id) {
-		//busco por id
 		
 		return iproductorepository.findById(id).orElse(null);
 	}
 
 	@Override
 	public void Eliminar(Integer id) {
-		//Eliminar por id
+		//ELIMINO MI PRODUCTO
 		iproductorepository.deleteById(id);
-		
 	}
 	
-	
-} //fin de la clase
+} //FIN DE MI CLASE

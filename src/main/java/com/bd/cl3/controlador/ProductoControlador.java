@@ -19,19 +19,15 @@ import com.bd.cl3.servicio.IProductoServicio;
 @RequestMapping("/vistas")
 public class ProductoControlador {
 
-	//inyeccion de dependencia...
+	//Realizo inyecion
 
 			@Autowired
-			
 			private IProductoServicio iproductoservicio;
-
-			//creamos el metodo listado..
+			//MEtodo lista
 			
 			@GetMapping("ListadoProducto")
 
 			public String ListadoProducto(Model modelo) {
-
-				//recuperamos el listado de autos..
 
 				List<TblProducto> listado=iproductoservicio.ListadoProducto();
 
@@ -40,46 +36,32 @@ public class ProductoControlador {
 			System.out.println("codigo "+lis.getIdproductocl3()+" "+" nombre "+lis.getNombrecl3());
 
 				}
-
-				//enviamos la data hacia la vista..
-
+				//ENVIO
 				modelo.addAttribute("listado",listado);
-
-				//retornamos
 
 				return "/Vistas/ListadoProducto";
 
-				
+			}//FIN
 
-			}  //fin del metodo listado auto...
-
-			
-
-			//creamos los respectivos para metodos para registrar...
-
+		
+			// METODO PARA REGISTRO
 			@GetMapping("/RegistrarProducto")
 
 			public String RegistrarProducto(Model modelo) {
 
-				//realizamos la respectiva instancia...
-
 				TblProducto cliente=new TblProducto();
 
-				//enviamos a la vista...
+				//ENVIO
 
 				modelo.addAttribute("regproducto",cliente);
 
-				//retornamos
-
+				//LUEGO RETORNO
 				return "/Vistas/FrmCrearProducto";
 
-				
+			} //FIN METODO REGISTRO
 
-			}  //fin del metodo registrar.
-
-			
-
-			//realizamos el mapeo con postmapping
+		
+			//REALIZO MAPEO
 
 			@PostMapping("/GuardarProducto")
 
@@ -89,34 +71,27 @@ public class ProductoControlador {
 
 				System.out.println("dato registrado en la bd");
 
-				//retornamos al listado...
-
+				//RETORNO MI LISTA
 				return "redirect:/vistas/ListadoProducto";	
 
-			}  //fin del metodo string...
+			} //FIN DE MI METODO
 
-			
-
-			//*****************crearmos el metodo editar...
-
+		
 			@GetMapping("/editar/{id}")
 
 			public String Editar(@PathVariable("id") Integer idcliente,Model modelo) {
 
 				TblProducto cliente=iproductoservicio.BuscarporId(idcliente);
 
-				//enviamos hacia la vista...
-
+				//ENVIO
 				modelo.addAttribute("regproducto",cliente);
 
-				//retornamos el frmcrearcliente...
-
+				
 				return "/Vistas/FrmCrearProducto";	
 
-			}  //fin del metodo editar...
+			}  //FIN DE MI METODO 
 	
 	
-			
 			@GetMapping("/eliminar/{id}")
 		    public String eliminar(@PathVariable("id") Integer idProducto, Model modelo) {
 		        iproductoservicio.Eliminar(idProducto);
@@ -124,5 +99,4 @@ public class ProductoControlador {
 		        return "redirect:/vistas/ListadoProducto";
 		    }
 			
-			
-} //fin de controlador
+}    //FIN DE MI CONTROLADOR
